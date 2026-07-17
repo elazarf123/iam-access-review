@@ -1,0 +1,18 @@
+check,severity,sam_account,display_name,role,detail,recommended_action
+C1_ORPHANED_ACCOUNT,CRITICAL,lvargas2,Logan Vargas,IT Administrator,Terminated 2026-06-10 but account still enabled (21 days exposed),"Disable immediately, revoke sessions/tokens, audit activity since termination date"
+C1_ORPHANED_ACCOUNT,CRITICAL,tyilmaz3,Taylor Yilmaz,IT Administrator,Terminated 2026-03-07 but account still enabled (116 days exposed),"Disable immediately, revoke sessions/tokens, audit activity since termination date"
+C1_ORPHANED_ACCOUNT,CRITICAL,cquintero4,Cameron Quintero,Physician,Terminated 2026-05-09 but account still enabled (53 days exposed),"Disable immediately, revoke sessions/tokens, audit activity since termination date"
+C2_PRIVILEGE_CREEP,HIGH,akowalski6,Alex Kowalski,Registration Clerk,Groups outside 'Registration Clerk' entitlement: GRP_Domain_Admins,Confirm business need with manager; remove excess membership or document exception
+C2_PRIVILEGE_CREEP,HIGH,qyilmaz6,Quinn Yilmaz,Billing Specialist,Groups outside 'Billing Specialist' entitlement: GRP_EHR_Orders,Confirm business need with manager; remove excess membership or document exception
+C3_PRIV_NO_MFA,HIGH,aotieno5,Alex Otieno,IT Support,Privileged member (GRP_Workstation_Admins) not MFA-enrolled,Enforce MFA enrollment before next logon; conditional-access block until enrolled
+C3_PRIV_NO_MFA,HIGH,lrossi2,Logan Rossi,IT Administrator,"Privileged member (GRP_Domain_Admins, GRP_Workstation_Admins) not MFA-enrolled",Enforce MFA enrollment before next logon; conditional-access block until enrolled
+C3_PRIV_NO_MFA,HIGH,malvarez4,Morgan Alvarez,IT Administrator,"Privileged member (GRP_Domain_Admins, GRP_Workstation_Admins) not MFA-enrolled",Enforce MFA enrollment before next logon; conditional-access block until enrolled
+C2_PRIVILEGE_CREEP,MEDIUM,cumar4,Casey Umar,Registration Clerk,Groups outside 'Registration Clerk' entitlement: GRP_Helpdesk_Tools,Confirm business need with manager; remove excess membership or document exception
+C2_PRIVILEGE_CREEP,MEDIUM,dzhang5,Dana Zhang,Physician,Groups outside 'Physician' entitlement: GRP_HRIS,Confirm business need with manager; remove excess membership or document exception
+C2_PRIVILEGE_CREEP,MEDIUM,eivanov2,Emerson Ivanov,Registration Clerk,Groups outside 'Registration Clerk' entitlement: GRP_EHR_Clinical,Confirm business need with manager; remove excess membership or document exception
+C4_UNOWNED_SERVICE,MEDIUM,svc_backup_legacy,svc_backup_legacy,n/a,Service account with no registered owner and interactive logon,"Assign owner, rotate credential, restrict to non-interactive logon"
+C4_UNOWNED_SERVICE,MEDIUM,svc_faxgateway,svc_faxgateway,n/a,Service account with no registered owner and interactive logon,"Assign owner, rotate credential, restrict to non-interactive logon"
+C5_DORMANT_ACCOUNT,MEDIUM,dxu3,Drew Xu,Physician,No logon in 156 days (threshold 90),"Confirm employment status/leave; disable if unused, re-enable on validated request"
+C5_DORMANT_ACCOUNT,MEDIUM,dnguyen,Drew Nguyen,Nurse,No logon in 191 days (threshold 90),"Confirm employment status/leave; disable if unused, re-enable on validated request"
+C5_DORMANT_ACCOUNT,MEDIUM,mchen4,Morgan Chen,Registration Clerk,No logon in 208 days (threshold 90),"Confirm employment status/leave; disable if unused, re-enable on validated request"
+C5_DORMANT_ACCOUNT,MEDIUM,dsilva,Dana Silva,Nurse,No logon in 165 days (threshold 90),"Confirm employment status/leave; disable if unused, re-enable on validated request"
