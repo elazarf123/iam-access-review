@@ -1,0 +1,8 @@
+role,allowed_groups
+Registration Clerk,GRP_EHR_Registration;GRP_Printers;GRP_VPN_Users
+Nurse,GRP_EHR_Clinical;GRP_Printers;GRP_VPN_Users
+Physician,GRP_EHR_Clinical;GRP_EHR_Orders;GRP_Printers;GRP_VPN_Users
+Billing Specialist,GRP_Claims_Portal;GRP_EHR_Billing;GRP_VPN_Users
+IT Support,GRP_Helpdesk_Tools;GRP_VPN_Users;GRP_Workstation_Admins
+IT Administrator,GRP_Domain_Admins;GRP_Helpdesk_Tools;GRP_VPN_Users;GRP_Workstation_Admins
+HR Coordinator,GRP_HRIS;GRP_Printers;GRP_VPN_Users
