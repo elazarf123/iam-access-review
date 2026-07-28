@@ -28,6 +28,45 @@ The audit finds **all 17 with zero false positives**, writes a severity-ranked [
 
 **Control traceability.** Every check maps to a HIPAA Security Rule citation and NIST CSF 2.0 control in [docs/access_review_procedure.md](docs/access_review_procedure.md), alongside the full JML procedure and the design rationale.
 
+## Architecture
+
+```mermaid
+flowchart LR
+  HR["HR roster<br/>(source of truth)"] --> REC
+  DIR["Directory export<br/>(62 accounts)"] --> REC
+  RBAC["RBAC matrix<br/>(role to allowed groups)"] --> REC
+  REC["Python reconciliation engine"] --> C1["C1 Orphaned accounts"]
+  REC --> C2["C2 Privilege creep"]
+  REC --> C3["C3 MFA gaps"]
+  REC --> C4["C4 Dormant accounts"]
+  REC --> C5["C5 Unauthorized admins"]
+  C1 --> RPT
+  C2 --> RPT
+  C3 --> RPT
+  C4 --> RPT
+  C5 --> RPT["Severity-ranked findings report"]
+  RPT --> REV{"Human review"}
+  REV -->|approved| PS["Gated PowerShell remediation"]
+  REV -->|rejected| AUD["Audit log only"]
+  PS --> AUD
+```
+
+Reconciliation is read-only. Nothing is disabled or de-provisioned without an explicit
+human approval step, which mirrors how a real quarterly access review is governed.
+
+## Privacy and security guardrails
+
+- **Synthetic data only.** The 62-account directory, HR roster, and access history are
+  generated for this project. No real identities, credentials, or PHI are present.
+- **No third-party data egress.** Everything runs locally against local files. Nothing is
+  sent to an external API or cloud service.
+- **Least privilege by design.** The RBAC matrix defines the minimum group membership per
+  role; anything beyond it is flagged as privilege creep rather than silently accepted.
+- **Human-in-the-loop remediation.** PowerShell actions are gated behind review and run in
+  `-WhatIf` mode by default, so a false positive cannot disable a live account.
+- **Auditability.** Every finding carries its check ID, severity, and supporting evidence so
+  the result is defensible to an auditor, not just a console message.
+
 ## Repository structure
 
 ```
