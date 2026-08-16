@@ -1,0 +1,5 @@
+﻿"UserName","Email","Role","LastLogin","DaysInactive","ComplianceFlag"
+"jdoe","jane.doe@enterprise.local","Standard","2026-08-10","6","Compliant"
+"asmith","alex.smith@enterprise.local","Admin","2026-02-15","182","CRITICAL: Stale Admin Account"
+"bwayne","bruce.wayne@enterprise.local","Admin","2025-11-01","288","CRITICAL: Stale Admin Account"
+"ckent","clark.kent@enterprise.local","Standard","2026-08-14","2","Compliant"
